@@ -262,6 +262,10 @@
       padding: 0.5rem 0.75rem;
       font-size: 1rem;
     }
+    .control-group select option {
+	background: #ffffff;
+	color: #000000;
+    }
     .control-group input[type=range] {
       accent-color: var(--professional-teal);
     }
@@ -701,11 +705,16 @@
     const exportPng = document.getElementById('export-png');
     const exportCsv = document.getElementById('export-csv');
     function resizeCanvas() {
-      canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-      canvas.height = canvas.offsetHeight * window.devicePixelRatio;
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-      drawChart();
-    }
+  const dpr = window.devicePixelRatio || 1;
+
+  canvas.width = canvas.offsetWidth * dpr;
+  canvas.height = canvas.offsetHeight * dpr;
+
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.scale(dpr, dpr);
+
+  drawChart();
+}
     function generateData() {
       const cycles = [];
       const nominal = [];
@@ -789,7 +798,7 @@
       ctx.font = '14px "Roboto Mono", monospace';
       ctx.fillText('EoL 80%', eolX + 6, 16);
       ctx.restore();
-      rulReadout.textContent = Cycles 0 – ${Math.round(maxCycles * 1.25)} (±5%) | ${Math.round(maxCycles / 2.4)} – ${Math.round(maxCycles / 2)} days;
+      rulReadout.textContent = `Cycles 0 – ${Math.round(maxCycles * 1.25)} (±5%) | ${Math.round(maxCycles / 2.4)} – ${Math.round(maxCycles / 2)} days`;
     }
     function updateReadouts() {
       tempValue.textContent = state.temp;
@@ -842,7 +851,7 @@
       const data = generateData();
       const rows = ['Cycle,Capacity,CI High,CI Low'];
       data.cycles.forEach((cycle, idx) => {
-        rows.push(${cycle.toFixed(1)},${data.nominal[idx].toFixed(3)},${data.errorHigh[idx].toFixed(3)},${data.errorLow[idx].toFixed(3)});
+        rows.push(`${cycle.toFixed(1)},${data.nominal[idx].toFixed(3)},${data.errorHigh[idx].toFixed(3)},${data.errorLow[idx].toFixed(3)}`);
       });
       const blob = new Blob([rows.join('\n')], { type: 'text/csv' });
       const link = document.createElement('a');
