@@ -1,0 +1,865 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hydronium Energies — Accelerating Electrochemical Scale‑Up</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&family=Roboto+Mono:wght@400;500&display=swap');
+    :root {
+      color-scheme: dark light;
+      --deep-navy: #0C1E3A;
+      --professional-teal: #00777B;
+      --accent-hover: #005C60;
+      --off-white: #F7FAFC;
+      --body-text: #1A2B4C;
+      --eol: #B00020;
+      --card-bg: #ffffff;
+      --shadow: 0 20px 40px rgba(12,30,58,0.2);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #F4F6FB;
+      color: var(--body-text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    h1,h2,h3,h4 {
+      font-family: 'Inter Tight', 'Inter', sans-serif;
+      margin: 0 0 0.5rem;
+      color: var(--deep-navy);
+    }
+    p {
+      margin: 0 0 1rem;
+    }
+    .site {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    header {
+      position: relative;
+      background: var(--deep-navy);
+      color: white;
+      padding: 3rem clamp(1.5rem, 3vw, 4rem) 4rem;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(0,119,123,0.4), transparent 55%);
+      pointer-events: none;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent 60%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hero-grid h1 {
+      font-size: clamp(2.5rem, 4vw, 3.8rem);
+      line-height: 1.2;
+    }
+    .hero-grid p {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      color: rgba(255,255,255,0.85);
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      border-radius: 999px;
+      padding: 0.85rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-primary {
+      background: var(--professional-teal);
+      color: white;
+      border-color: var(--professional-teal);
+      box-shadow: 0 10px 20px rgba(0,119,123,0.35);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border-color: rgba(255,255,255,0.6);
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+    .data-wave {
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml,%3Csvg width="1200" height="300" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M0 200 Q200 100 400 200 T800 200 T1200 200 V300 H0z" fill="%2300777B" opacity="0.2" /%3E%3C/svg%3E');
+      background-size: cover;
+      mix-blend-mode: screen;
+      opacity: 0.5;
+      animation: wave 15s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes wave {
+      from { background-position: 0 0; }
+      to { background-position: 1200px 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .data-wave {
+        animation: none;
+      }
+      .btn {
+        transition: none;
+      }
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    section {
+      padding: 0 clamp(1.5rem, 3vw, 4rem);
+    }
+    .section-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: clamp(1.5rem, 3vw, 3rem);
+      box-shadow: var(--shadow);
+    }
+    .problem-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .problem-item {
+      border-left: 4px solid var(--professional-teal);
+      padding: 1rem;
+      background: #F8FBFF;
+      border-radius: 16px;
+      min-height: 130px;
+    }
+    .problem-item strong {
+      font-size: 1.1rem;
+      display: block;
+      color: var(--deep-navy);
+    }
+    .value-note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #4B5563;
+    }
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .cap-card {
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 1rem;
+      background: white;
+      min-height: 120px;
+    }
+    .cap-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .figure-panel {
+      background: #0B162F;
+      color: white;
+      border-radius: 28px;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      position: relative;
+      overflow: hidden;
+    }
+    .figure-panel::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(0,119,123,0.4), transparent 40%);
+      pointer-events: none;
+    }
+    .figure-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 1.5rem;
+    }
+    .figure-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .figure-title h2 {
+      color: white;
+      font-size: 1.8rem;
+    }
+    .animation-indicator {
+      font-family: 'Roboto Mono', monospace;
+      background: rgba(255,255,255,0.1);
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+    }
+    .figure-chart {
+      position: relative;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      padding: 1rem;
+    }
+    .figure-chart canvas {
+      width: 100%;
+      height: 320px;
+      display: block;
+      border-radius: 16px;
+      background: #0D1031;
+    }
+    .figure-controls {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .control-group {
+      background: rgba(255,255,255,0.04);
+      padding: 1rem;
+      border-radius: 16px;
+    }
+    .control-group label {
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+    .control-group select,
+    .control-group input {
+      width: 100%;
+      margin-top: 0.35rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.05);
+      color: white;
+      padding: 0.5rem 0.75rem;
+      font-size: 1rem;
+    }
+    .control-group input[type=range] {
+      accent-color: var(--professional-teal);
+    }
+    .legend {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.4rem;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+    .legend-swatch {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+    }
+    .legend-swatch.primary {
+      background: var(--professional-teal);
+    }
+    .legend-swatch.secondary {
+      background: #3C8BC9;
+    }
+    .exports {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .exports button {
+      border-radius: 12px;
+      padding: 0.65rem 1.25rem;
+      border: none;
+      background: rgba(255,255,255,0.12);
+      color: white;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .exports button:hover {
+      background: rgba(255,255,255,0.25);
+    }
+    .how-it-works {
+      display: flex;
+      justify-content: center;
+    }
+    .how-diagram {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .how-step {
+      background: #0C1E3A;
+      color: white;
+      border-radius: 18px;
+      padding: 1rem 1.5rem;
+      min-width: 180px;
+      position: relative;
+    }
+    .how-step::after {
+      content: '';
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      width: 20px;
+      height: 2px;
+      background: var(--professional-teal);
+      transform: translateY(-50%);
+    }
+    .how-step:last-child::after {
+      display: none;
+    }
+    .technology-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .tech-card {
+      background: white;
+      padding: 1.25rem;
+      border-radius: 18px;
+      border: 1px solid #E2E8F0;
+      min-height: 140px;
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    .comparison-table th {
+      background: #0C1E3A;
+      color: white;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .comparison-table tbody tr:nth-child(odd) {
+      background: #F7FAFC;
+    }
+    .use-cases {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .use-case-card {
+      background: white;
+      padding: 1rem;
+      border-radius: 16px;
+      border: 1px solid #E2E8F0;
+    }
+    form {
+      display: grid;
+      gap: 1rem;
+    }
+    form input, form textarea {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid #CBD5F5;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      background: #F8FAFC;
+    }
+    form button {
+      border: none;
+      border-radius: 999px;
+      padding: 0.85rem 2rem;
+      font-size: 1rem;
+      cursor: pointer;
+      background: var(--professional-teal);
+      color: white;
+      font-weight: 600;
+      justify-self: flex-start;
+    }
+    .contact-info {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 1rem;
+    }
+    .contact-info a {
+      color: var(--professional-teal);
+      text-decoration: none;
+    }
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      background: #0C1E3A;
+      color: white;
+      padding: 2rem clamp(1.5rem, 3vw, 4rem);
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .figure-title {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .how-diagram {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header aria-labelledby="hero-title">
+      <div class="data-wave" aria-hidden="true"></div>
+      <div class="hero-grid">
+        <p style="font-size:0.9rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.85);">Hydronium Energies</p>
+        <h1 id="hero-title">Accelerating Electrochemical Scale-Up with AI</h1>
+        <p>Predict degradation, optimize performance, and de-risk deployment for batteries, fuel cells, and electrolyzers.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary" type="button">Request a Demo</button>
+          <button class="btn btn-secondary" type="button">Download One-Pager</button>
+        </div>
+        <div class="animation-indicator" aria-live="polite">Live data wave — respect prefers-reduced-motion</div>
+      </div>
+    </header>
+    <main>
+      <section class="section-card" aria-labelledby="problem-title">
+        <h2 id="problem-title">Problem &amp; Value Proposition (Quantified)</h2>
+        <p class="value-note">Figures are representative, model-based estimates under comparable profiles; methods available on request.</p>
+        <div class="problem-grid">
+          <article class="problem-item">
+            <strong>Validation time</strong>
+            Reduce validation cycles by <strong>20–35%</strong>
+          </article>
+          <article class="problem-item">
+            <strong>Reliability &amp; lifetime</strong>
+            Extend useful life to EoL 80% by <strong>10–20%</strong>
+          </article>
+          <article class="problem-item">
+            <strong>Data efficiency</strong>
+            Achieve required accuracy with <strong>2–3× less data</strong>
+          </article>
+          <article class="problem-item">
+            <strong>Risk &amp; cost</strong>
+            Lower capex/scale-up risk via earlier failure detection by <strong>25–40%</strong>
+          </article>
+          <article class="problem-item">
+            <strong>Operations</strong>
+            Decrease unplanned downtime by <strong>15–30%</strong>
+          </article>
+        </div>
+      </section>
+      <section class="section-card" aria-labelledby="cap-title">
+        <h2 id="cap-title">Platform Capabilities</h2>
+        <div class="capabilities-grid">
+          <div class="cap-card">
+            <h3>Predictive Degradation Models</h3>
+            <p>Surrogate ensembles tuned to flight-ready chemistries.</p>
+          </div>
+          <div class="cap-card">
+            <h3>Physics-Informed Digital Twins</h3>
+            <p>Cells, stacks, and systems modeled with multi-scale fidelity.</p>
+          </div>
+          <div class="cap-card">
+            <h3>Experimental Design Optimization</h3>
+            <p>Adaptive DOE for maximum insight per test.</p>
+          </div>
+          <div class="cap-card">
+            <h3>Fleet Health Monitoring &amp; RUL</h3>
+            <p>Real-time observability with prognostics.</p>
+          </div>
+          <div class="cap-card">
+            <h3>API + On-Prem/Cloud Deployment</h3>
+            <p>Flexible architecture for regulated environments.</p>
+          </div>
+        </div>
+      </section>
+      <section class="figure-panel" aria-labelledby="figure-title">
+        <div class="figure-content">
+          <div class="figure-title">
+            <h2 id="figure-title">Li-ion RUL Explorer — Pro</h2>
+            <div class="legend">
+              <span class="legend-item"><span class="legend-swatch primary"></span>Physics-Informed ML</span>
+              <span class="legend-item"><span class="legend-swatch secondary"></span>Empirical Baseline</span>
+            </div>
+          </div>
+          <div class="figure-chart" role="img" aria-label="Capacity vs cycles chart with credible interval, EoL marker, and comparison toggle">
+            <canvas id="rul-canvas" aria-hidden="true"></canvas>
+          </div>
+          <div class="figure-controls">
+            <div class="control-group">
+              <label for="preset-select">Presets</label>
+              <select id="preset-select" aria-label="Choose profile preset">
+                <option value="fastcharge">EV Fast Charge</option>
+                <option value="mixed">EV Mixed</option>
+                <option value="stationary1">Stationary 1C / 25°C</option>
+                <option value="stationary2">Stationary 0.5C / 35°C</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label for="temp-range">Temperature (°C): <span id="temp-value">25</span></label>
+              <input type="range" id="temp-range" min="20" max="45" value="25" step="1">
+            </div>
+            <div class="control-group">
+              <label for="crate-range">C-Rate: <span id="crate-value">1.0</span></label>
+              <input type="range" id="crate-range" min="0.5" max="2.0" value="1.0" step="0.1">
+            </div>
+            <div class="control-group">
+              <label for="dod-range">Depth of Discharge (%): <span id="dod-value">80</span></label>
+              <input type="range" id="dod-range" min="50" max="100" value="80">
+            </div>
+            <div class="control-group">
+              <label for="rest-range">Rest (min): <span id="rest-value">5</span></label>
+              <input type="range" id="rest-range" min="0" max="15" value="5">
+            </div>
+          </div>
+          <div class="legend" aria-live="polite">
+            <div>RUL panel: <strong id="rul-readout">Cycling 0 – 780 cycles (±5%) | 0 – 320 days</strong></div>
+            <div class="exports">
+              <button id="export-png" type="button">Export PNG</button>
+              <button id="export-csv" type="button">Export CSV</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-card" aria-labelledby="how-title">
+        <h2 id="how-title">How It Works</h2>
+        <div class="how-diagram" role="img" aria-label="Data ingestion to deployment flow">
+          <div class="how-step">
+            <p>&#x21AA; Ingest Data</p>
+            <p style="font-size:0.85rem;">Lab, fleet, and sensor inputs</p>
+          </div>
+          <div class="how-step">
+            <p>&#x21AA; Train / Adapt Models</p>
+            <p style="font-size:0.85rem;">Physics-informed ML + UQ</p>
+          </div>
+          <div class="how-step">
+            <p>&#x21AA; Deploy Insights</p>
+            <p style="font-size:0.85rem;">APIs, dashboards, QoS gates</p>
+          </div>
+        </div>
+      </section>
+      <section class="section-card" aria-labelledby="tech-title">
+        <h2 id="tech-title">Technology &amp; Science</h2>
+        <div class="technology-grid">
+          <div class="tech-card">
+            <h3>Physics-informed ML</h3>
+            <p>Integrating first-principle constraints to guide prognostics and preserve interpretability.</p>
+          </div>
+          <div class="tech-card">
+            <h3>Uncertainty quantification</h3>
+            <p>Credible intervals with 95% confidence; decision-ready outputs for engineering teams.</p>
+          </div>
+          <div class="tech-card">
+            <h3>Interpretability</h3>
+            <p>Feature contributions, sensitivity maps, and knee-point annotations explain RUL forecasts.</p>
+          </div>
+          <div class="tech-card">
+            <h3>Privacy &amp; compliance</h3>
+            <p>GDPR-ready architecture with SOC2-ready roadmap for enterprise deployments.</p>
+          </div>
+        </div>
+      </section>
+      <section class="section-card" aria-labelledby="comparison-title">
+        <h2 id="comparison-title">Comparison &amp; Benchmarks</h2>
+        <p style="margin-bottom: 1rem;">Representative result: <strong>20–35%</strong> lower RUL MAE vs empirical baseline on EV-like profiles; <strong>2–3×</strong> faster convergence.</p>
+        <div style="overflow-x:auto;">
+          <table class="comparison-table" aria-describedby="comparison-description">
+            <caption id="comparison-description" style="caption-side: top; text-align:left; font-size:0.9rem; padding-bottom:0.5rem;">Methods evaluated across RUL MAE, early-knee consistency, data efficiency, and inference latency.</caption>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>RUL MAE</th>
+                <th>Early-knee consistency</th>
+                <th>Cycles to converge</th>
+                <th>Inference latency</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Physics-Informed ML</td>
+                <td>±4.2 cycles</td>
+                <td>95% repeatability</td>
+                <td>220</td>
+                <td>180 ms</td>
+              </tr>
+              <tr>
+                <td>Empirical Baseline</td>
+                <td>±6.9 cycles</td>
+                <td>68% repeatability</td>
+                <td>610</td>
+                <td>120 ms</td>
+              </tr>
+              <tr>
+                <td>Rule-Based</td>
+                <td>±9.1 cycles</td>
+                <td>55% repeatability</td>
+                <td>840</td>
+                <td>95 ms</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="section-card" aria-labelledby="use-title">
+        <h2 id="use-title">Use Cases</h2>
+        <div class="use-cases">
+          <div class="use-case-card">
+            <h3>Batteries — EV</h3>
+            <p>Prognostics for fast-charge fleets balancing range, safety, and warranty risk.</p>
+          </div>
+          <div class="use-case-card">
+            <h3>Batteries — Stationary</h3>
+            <p>SoH monitoring, modular scaling, and lifecycle planning for ESS deployments.</p>
+          </div>
+          <div class="use-case-card">
+            <h3>Fuel Cells</h3>
+            <p>Degradation-aware controls for power-dense stacks.</p>
+          </div>
+          <div class="use-case-card">
+            <h3>Electrolyzers</h3>
+            <p>Dynamic modeling for ramping, impurity management, and economics.</p>
+          </div>
+        </div>
+      </section>
+      <section class="section-card" aria-labelledby="about-title">
+        <h2 id="about-title">About Hydronium Energies</h2>
+        <p>Mission: Deliver science-forward AI that gives electrochemical innovators confidence in every scale-up decision. Founded to bridge lab-grade physics with fleet-grade analytics, our platform amplifies science, proprietary datasets, and modern, secure tooling.</p>
+      </section>
+      <section class="section-card" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact &amp; Demo Request</h2>
+        <form aria-label="Demo request form">
+          <input type="text" name="name" placeholder="Name" required>
+          <input type="email" name="email" placeholder="Work Email" required>
+          <input type="text" name="company" placeholder="Company" required>
+          <input type="text" name="usecase" placeholder="Use Case" required>
+          <textarea name="message" rows="4" placeholder="Message"></textarea>
+          <button type="submit">Request a Demo</button>
+        </form>
+        <div class="contact-info" aria-label="Contact information">
+          <span>Email: <a href="mailto:engage@hydroniumenergies.com">engage@hydroniumenergies.com</a></span>
+          <span>LinkedIn: <a href="https://www.linkedin.com/company/hydroniumenergies" target="_blank" rel="noreferrer">Hydronium Energies</a></span>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2024 Hydronium Energies. Responsive, WCAG-compliant experiences for electrochemical scale-up.</p>
+    </footer>
+  </div>
+  <script>
+    const canvas = document.getElementById('rul-canvas');
+    const ctx = canvas.getContext('2d');
+    const presets = {
+      fastcharge: { temp: 35, crate: 2.0, dod: 95, rest: 2, label: 'Fast Charge' },
+      mixed: { temp: 30, crate: 1.4, dod: 85, rest: 4, label: 'Mixed' },
+      stationary1: { temp: 25, crate: 1.0, dod: 80, rest: 6, label: 'Stationary 1C' },
+      stationary2: { temp: 35, crate: 0.5, dod: 75, rest: 10, label: 'Stationary 0.5C' }
+    };
+    const state = {
+      preset: 'fastcharge',
+      temp: 35,
+      crate: 2.0,
+      dod: 95,
+      rest: 2
+    };
+    const tempInput = document.getElementById('temp-range');
+    const crateInput = document.getElementById('crate-range');
+    const dodInput = document.getElementById('dod-range');
+    const restInput = document.getElementById('rest-range');
+    const tempValue = document.getElementById('temp-value');
+    const crateValue = document.getElementById('crate-value');
+    const dodValue = document.getElementById('dod-value');
+    const restValue = document.getElementById('rest-value');
+    const presetSelect = document.getElementById('preset-select');
+    const rulReadout = document.getElementById('rul-readout');
+    const exportPng = document.getElementById('export-png');
+    const exportCsv = document.getElementById('export-csv');
+    function resizeCanvas() {
+      canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+      canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      drawChart();
+    }
+    function generateData() {
+      const cycles = [];
+      const nominal = [];
+      const errorHigh = [];
+      const errorLow = [];
+      const base = 100;
+      const noise = 1.2 + state.rest * 0.05;
+      for (let i = 0; i <= 100; i++) {
+        const cycle = i * 8;
+        const degradation = Math.min(55, (cycle / 170) ** 1.1 * (1 + state.temp / 150));
+        const variation = Math.sin(cycle / 40) * 0.5;
+        const center = base - degradation - variation - (state.crate - 1) * 4;
+        cycles.push(cycle);
+        nominal.push(center);
+        errorHigh.push(center + 1.8 + state.dod / 300);
+        errorLow.push(center - 1.8 - state.dod / 400);
+      }
+      return { cycles, nominal, errorHigh, errorLow };
+    }
+    function drawChart() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.save();
+      const width = canvas.width / window.devicePixelRatio;
+      const height = canvas.height / window.devicePixelRatio;
+      ctx.fillStyle = '#0D1031';
+      ctx.fillRect(0, 0, width, height);
+      ctx.translate(40, 20);
+      const chartWidth = width - 60;
+      const chartHeight = height - 60;
+      ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+      ctx.lineWidth = 1;
+      for (let i = 0; i <= 5; i++) {
+        const y = (chartHeight / 5) * i;
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(chartWidth, y);
+        ctx.stroke();
+      }
+      const data = generateData();
+      const maxCycles = data.cycles[data.cycles.length - 1];
+      ctx.beginPath();
+      ctx.fillStyle = 'rgba(0,119,123,0.25)';
+      ctx.lineTo(0, chartHeight);
+      data.cycles.forEach((cycle, idx) => {
+        const x = (cycle / maxCycles) * chartWidth;
+        const y = chartHeight - (data.errorLow[idx] / 110) * chartHeight;
+        ctx.lineTo(x, y);
+      });
+      ctx.lineTo(chartWidth, chartHeight);
+      ctx.closePath();
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(0, chartHeight - (data.nominal[0] / 110) * chartHeight);
+      ctx.strokeStyle = '#3C8BC9';
+      ctx.lineWidth = 2;
+      data.nominal.forEach((value, idx) => {
+        const x = (data.cycles[idx] / maxCycles) * chartWidth;
+        const y = chartHeight - (value / 110) * chartHeight;
+        ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(0, chartHeight - (data.nominal[0] / 110) * chartHeight);
+      ctx.strokeStyle = '#00777B';
+      ctx.lineWidth = 2.5;
+      data.nominal.forEach((value, idx) => {
+        const x = (data.cycles[idx] / maxCycles) * chartWidth;
+        const y = chartHeight - (value / 110) * chartHeight;
+        ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+      ctx.strokeStyle = '#B00020';
+      ctx.setLineDash([6,4]);
+      const eolX = ((80 / 100) * maxCycles) / maxCycles * chartWidth;
+      ctx.beginPath();
+      ctx.moveTo(eolX, 0);
+      ctx.lineTo(eolX, chartHeight);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#B00020';
+      ctx.font = '14px "Roboto Mono", monospace';
+      ctx.fillText('EoL 80%', eolX + 6, 16);
+      ctx.restore();
+      rulReadout.textContent = Cycles 0 – ${Math.round(maxCycles * 1.25)} (±5%) | ${Math.round(maxCycles / 2.4)} – ${Math.round(maxCycles / 2)} days;
+    }
+    function updateReadouts() {
+      tempValue.textContent = state.temp;
+      crateValue.textContent = state.crate.toFixed(1);
+      dodValue.textContent = state.dod;
+      restValue.textContent = state.rest;
+    }
+    function applyPreset(value) {
+      const preset = presets[value];
+      state.preset = value;
+      state.temp = preset.temp;
+      state.crate = preset.crate;
+      state.dod = preset.dod;
+      state.rest = preset.rest;
+      tempInput.value = state.temp;
+      crateInput.value = state.crate;
+      dodInput.value = state.dod;
+      restInput.value = state.rest;
+      updateReadouts();
+      drawChart();
+    }
+    presetSelect.addEventListener('change', (e) => applyPreset(e.target.value));
+    tempInput.addEventListener('input', (e) => {
+      state.temp = parseInt(e.target.value, 10);
+      updateReadouts();
+      drawChart();
+    });
+    crateInput.addEventListener('input', (e) => {
+      state.crate = parseFloat(e.target.value);
+      updateReadouts();
+      drawChart();
+    });
+    dodInput.addEventListener('input', (e) => {
+      state.dod = parseInt(e.target.value, 10);
+      updateReadouts();
+      drawChart();
+    });
+    restInput.addEventListener('input', (e) => {
+      state.rest = parseInt(e.target.value, 10);
+      updateReadouts();
+      drawChart();
+    });
+    exportPng.addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.href = canvas.toDataURL('image/png');
+      link.download = 'rul-curve.png';
+      link.click();
+    });
+    exportCsv.addEventListener('click', () => {
+      const data = generateData();
+      const rows = ['Cycle,Capacity,CI High,CI Low'];
+      data.cycles.forEach((cycle, idx) => {
+        rows.push(${cycle.toFixed(1)},${data.nominal[idx].toFixed(3)},${data.errorHigh[idx].toFixed(3)},${data.errorLow[idx].toFixed(3)});
+      });
+      const blob = new Blob([rows.join('\n')], { type: 'text/csv' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'rul-curve.csv';
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(link.href), 100);
+    });
+    window.addEventListener('resize', () => {
+      ctx.setTransform(1,0,0,1,0,0);
+      resizeCanvas();
+    });
+    window.addEventListener('load', () => {
+      resizeCanvas();
+      updateReadouts();
+      applyPreset('fastcharge');
+    });
+  </script>
+</body>
+</html>
